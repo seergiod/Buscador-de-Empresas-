@@ -1,4 +1,4 @@
-@import "tailwindcss" source(none);
+@import "tailwindcss";
 @source "../src";
 @import "tw-animate-css";
 
@@ -153,20 +153,46 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  html, body { cursor: none; }
-  @media (max-width: 768px) { html, body { cursor: auto; } }
+  html,
+  body {
+    cursor: none;
+  }
 
-  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+  @media (max-width: 768px) {
 
-  ::selection { background: var(--neon); color: #04140b; }
+    html,
+    body {
+      cursor: auto;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: var(--neon);
+    color: #04140b;
+  }
 }
 
 @layer utilities {
-  .text-neon { color: var(--neon); }
-  .bg-deep { background-color: var(--bg-deep); }
+  .text-neon {
+    color: var(--neon);
+  }
+
+  .bg-deep {
+    background-color: var(--bg-deep);
+  }
+
   .glow-border {
     box-shadow: var(--shadow-neon);
   }
+
   .card-luxe {
     background: linear-gradient(180deg, oklch(0.21 0.012 155), oklch(0.17 0.01 155));
     border: 1px solid var(--color-border);
@@ -174,41 +200,100 @@
     will-change: transform;
     transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
   }
+
   .card-luxe:hover {
     transform: translateY(-4px);
     border-color: oklch(0.88 0.24 152 / 0.5);
     box-shadow: var(--shadow-neon);
   }
+
   .grain::before {
     content: "";
-    position: absolute; inset: 0; pointer-events: none;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
     background-image: radial-gradient(oklch(1 0 0 / 0.04) 1px, transparent 1px);
     background-size: 3px 3px;
     mix-blend-mode: overlay;
     opacity: .35;
   }
+
   @keyframes pulse-dot {
-    0%, 100% { opacity: .3; transform: scale(.8); }
-    50% { opacity: 1; transform: scale(1); }
+
+    0%,
+    100% {
+      opacity: .3;
+      transform: scale(.8);
+    }
+
+    50% {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
-  .loader-dot { animation: pulse-dot 1.2s ease-in-out infinite; }
+
+  .loader-dot {
+    animation: pulse-dot 1.2s ease-in-out infinite;
+  }
 }
 
 @font-face {
   font-family: 'Cabinet Grotesk';
   src: url('https://fonts.cdnfonts.com/s/95186/CabinetGrotesk-Bold.woff') format('woff');
-  font-weight: 700; font-display: swap;
+  font-weight: 700;
+  font-display: swap;
 }
+
 @font-face {
   font-family: 'Cabinet Grotesk';
   src: url('https://fonts.cdnfonts.com/s/95186/CabinetGrotesk-Medium.woff') format('woff');
-  font-weight: 500; font-display: swap;
+  font-weight: 500;
+  font-display: swap;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
 
 /* Hide cursor on clickable */
-a, button, [role="button"], input, textarea, select, label[for] {
+a,
+button,
+[role="button"],
+input,
+textarea,
+select,
+label[for] {
   cursor: none;
-  }
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  background-color: #050505;
+  /* Deep Space Dark */
+  color: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+  /* Fondo radial sutil simulando un brillo de neón */
+  background: radial-gradient(circle at 50% 0%, #1a1a2e 0%, #050505 70%);
+  min-height: 100vh;
+}
+
+/* Clase custom para el Glassmorphism premium */
+.glass-panel {
+  background: rgba(25, 25, 35, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.glass-panel:hover {
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  /* Electric Cyan al hacer hover */
+  transition: border 0.3s ease;
 }
