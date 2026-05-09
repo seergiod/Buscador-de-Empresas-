@@ -14,7 +14,86 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      search_results: {
+        Row: {
+          address: string | null
+          category: string | null
+          contacted: boolean
+          created_at: string
+          email: string | null
+          id: string
+          name: string
+          phone: string | null
+          place_id: string | null
+          rating: number | null
+          raw_data: Json | null
+          search_id: string
+        }
+        Insert: {
+          address?: string | null
+          category?: string | null
+          contacted?: boolean
+          created_at?: string
+          email?: string | null
+          id?: string
+          name: string
+          phone?: string | null
+          place_id?: string | null
+          rating?: number | null
+          raw_data?: Json | null
+          search_id: string
+        }
+        Update: {
+          address?: string | null
+          category?: string | null
+          contacted?: boolean
+          created_at?: string
+          email?: string | null
+          id?: string
+          name?: string
+          phone?: string | null
+          place_id?: string | null
+          rating?: number | null
+          raw_data?: Json | null
+          search_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "search_results_search_id_fkey"
+            columns: ["search_id"]
+            isOneToOne: false
+            referencedRelation: "searches"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      searches: {
+        Row: {
+          created_at: string
+          filters: Json
+          id: string
+          location_label: string | null
+          name: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          filters?: Json
+          id?: string
+          location_label?: string | null
+          name: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          filters?: Json
+          id?: string
+          location_label?: string | null
+          name?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
