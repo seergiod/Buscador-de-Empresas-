@@ -82,6 +82,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:description", content: "Encuentra negocios locales sin presencia online y conviértete en su socio digital." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "LeadMapper — Encuentra negocios sin web" },
+      { name: "twitter:description", content: "Encuentra negocios locales sin presencia online y conviértete en su socio digital." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/Eg0H5jN3cMOPN1RBEyXnfIPRmd52/social-images/social-1778419193725-image.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/Eg0H5jN3cMOPN1RBEyXnfIPRmd52/social-images/social-1778419193725-image.webp" },
     ],
     links: [
       {
