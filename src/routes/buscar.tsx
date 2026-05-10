@@ -1,7 +1,8 @@
+/// <reference types="google.maps" />
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Loader } from "@googlemaps/js-api-loader";
+import { setOptions, importLibrary } from "@googlemaps/js-api-loader";
 import { ArrowLeft, Globe, Loader2, MapPin, Phone, Save, Search, Star } from "lucide-react";
 import { getMapsConfig } from "@/lib/maps.functions";
 import { supabase } from "@/integrations/supabase/client";
@@ -71,9 +72,9 @@ function BuscarPage() {
     (async () => {
       try {
         const { apiKey } = await getMapsConfig();
-        const loader = new Loader({ apiKey, version: "weekly", libraries: ["places"] });
-        await loader.importLibrary("maps");
-        await loader.importLibrary("places");
+        setOptions({ key: apiKey, v: "weekly" });
+        await importLibrary("maps");
+        await importLibrary("places");
         if (cancelled || !mapRef.current) return;
         mapInstance.current = new google.maps.Map(mapRef.current, {
           center: { lat: 40.4168, lng: -3.7038 },
